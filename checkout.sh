@@ -1,3 +1,5 @@
+cd $HOME/src
+
 cd openhrp3
 git pull
 cd ..
@@ -19,23 +21,23 @@ cd ../..
 
 
 cd robot/HRP2DRC
-svn update 
+git pull
 cd ../..
 
 
 cd hmc2
-svn update 
+git pull
 cd ..
 
 
 cd hrpsys-humanoid
-svn update 
+git pull
 cd ..
 
 
-cd hrpeyewalk
-svn update 
-cd ..
+#cd hrpeyewalk
+#svn update 
+#cd ..
 
 cd choreonoid
 GIT_SSL_NO_VERIFY=1 git pull
