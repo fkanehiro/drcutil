@@ -1,3 +1,5 @@
+cd $HOME/src
+
 cd openhrp3/build
 make -j4 install
 cd ../../
@@ -33,9 +35,9 @@ make -j4 install
 cd ../../
 
 
-cd hrpeyewalk/build
-make -j4 install
-cd ../../
+#cd hrpeyewalk/build
+#make -j4 install
+#cd ../../
 
 cd choreonoid/build
 make -j4 install
