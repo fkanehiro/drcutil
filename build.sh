@@ -1,4 +1,5 @@
-cd $HOME/src
+source config.sh
+cd $SRC_DIR
 
 cd openhrp3/build
 make -j4 install
@@ -15,9 +16,9 @@ make -j4 install
 cd ../../..
 
 
-cd robot/HRP2SH/build
-make -j4 install
-cd ../../..
+# cd robot/HRP2SH/build
+# make -j4 install
+# cd ../../..
 
 
 cd robot/HRP2DRC/build

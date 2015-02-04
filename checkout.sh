@@ -1,4 +1,6 @@
-cd $HOME/src
+source config.sh
+
+cd $SRC_DIR
 
 cd openhrp3
 git pull
@@ -15,9 +17,9 @@ svn update
 cd ../..
 
 
-cd robot/HRP2SH
-svn update 
-cd ../..
+# cd robot/HRP2SH
+# svn update 
+# cd ../..
 
 
 cd robot/HRP2DRC
