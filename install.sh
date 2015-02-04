@@ -16,19 +16,14 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
 make -j2 install
 
-cd $SRC_DIR/HRP2
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-make -j2 install
-
-# svn co https://atom.a01.aist.go.jp/svn/HRP2SH/trunk HRP2SH
-# cd HRP2SH
-# mkdir build
-# cd build
-# cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-# make -j2 install
-# cd ../..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
+then
+    cd $SRC_DIR/HRP2
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
+    make -j2 install
+fi
 
 cd $SRC_DIR/HRP2DRC
 mkdir build
@@ -67,7 +62,12 @@ yes | ./install-requisites-ubuntu-$UBUNTU_VER.sh
 cd ../..
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON -DBODY_CUSTOMIZERS=$SRC_DIR/robot/HRP2/customizer/HRP2Customizer ..
+if [ "$HAVE_ATOM_ACCESS" -eq 1]
+then
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON -DBODY_CUSTOMIZERS=$SRC_DIR/HRP2/customizer/HRP2Customizer ..
+else
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON
+fi
 make -j2 install
 cd ../..
 
