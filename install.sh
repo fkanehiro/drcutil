@@ -3,7 +3,7 @@ source config.sh
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 
 cd $SRC_DIR/openhrp3/util
-yes | ./installPackages.sh packages.list.ubuntu.$UBUNTU_VER
+./installPackages.sh packages.list.ubuntu.$UBUNTU_VER
 cd ..
 mkdir build
 cd build
@@ -27,6 +27,7 @@ fi
 
 cd $SRC_DIR/HRP2DRC
 mkdir build
+cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
 make -j2 install
 
@@ -46,7 +47,7 @@ sudo apt-get -y install libyaml-dev libncurses5-dev
 cd $SRC_DIR/hmc2
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
+cmake -DCMAKE_INSTALL_PREFIX=$PREFIX .. -DCOMPILE_JAVA_STUFF=OFF
 make -j2 install
 cd ../..
 
@@ -58,15 +59,15 @@ make -j2 install
 cd ../..
 
 cd $SRC_DIR/choreonoid/misc/script
-yes | ./install-requisites-ubuntu-$UBUNTU_VER.sh
+./install-requisites-ubuntu-$UBUNTU_VER.sh
 cd ../..
 mkdir build
 cd build
-if [ "$HAVE_ATOM_ACCESS" -eq 1]
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
 then
     cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON -DBODY_CUSTOMIZERS=$SRC_DIR/HRP2/customizer/HRP2Customizer ..
 else
-    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON ..
 fi
 make -j2 install
 cd ../..
