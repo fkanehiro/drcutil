@@ -11,6 +11,7 @@ if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
 then
     svn co https://atom.a01.aist.go.jp/svn/HRP2/trunk HRP2
     # svn co https://atom.a01.aist.go.jp/svn/HRP2SH/trunk HRP2SH
+    svn co https://atom.a01.aist.go.jp/svn/hrprtc/trunk hrpsys-private
 fi
 
 git clone https://github.com/jrl-umi3218/hrp2-drc.git HRP2DRC

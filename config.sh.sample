@@ -2,3 +2,5 @@ export SRC_DIR=$HOME/src
 export UBUNTU_VER=14.04
 export PREFIX=$HOME/openrtp
 export HAVE_ATOM_ACCESS=1
+export SUDO=
+

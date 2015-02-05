@@ -12,17 +12,19 @@ git pull
 cd ..
 
 
-cd robot/HRP2
-svn update 
-cd ../..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
+then
+    cd HRP2
+    svn update 
+    cd ../..
+
+    # cd robot/HRP2SH
+    # svn update 
+    # cd ../..
+fi
 
 
-# cd robot/HRP2SH
-# svn update 
-# cd ../..
-
-
-cd robot/HRP2DRC
+cd HRP2DRC
 git pull
 cd ../..
 
@@ -37,9 +39,13 @@ git pull
 cd ..
 
 
-#cd hrpeyewalk
-#svn update 
-#cd ..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
+then
+    cd hrpsys-private
+    svn update
+    cd ..
+fi
+
 
 cd choreonoid
 GIT_SSL_NO_VERIFY=1 git pull

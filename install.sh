@@ -2,19 +2,17 @@ source config.sh
 
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 
-cd $SRC_DIR/openhrp3/util
-./installPackages.sh packages.list.ubuntu.$UBUNTU_VER
-cd ..
+cd $SRC_DIR/openhrp3
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCOMPILE_JAVA_STUFF=OFF ..
-make -j2 install
+$SUDO make -j2 install
 
 cd $SRC_DIR/octomap-1.6.8
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-make -j2 install
+$SUDO make -j2 install
 
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
 then
@@ -22,45 +20,43 @@ then
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-    make -j2 install
+    $SUDO make -j2 install
 fi
 
 cd $SRC_DIR/HRP2DRC
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-make -j2 install
-
-sudo add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl
-sudo apt-get update
-sudo apt-get -y install libxml2-dev libsdl-dev libglew-dev libcv-dev libcvaux-dev libhighgui-dev libqhull-dev freeglut3-dev libxmu-dev python-dev libboost-python-dev ipython openrtm-aist-python libpcl-all
+$SUDO make -j2 install
 
 cd $SRC_DIR/hrpsys-base
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCOMPILE_JAVA_STUFF=OFF -DBUILD_KALMAN_FILTER=OFF -DBUILD_STABILIZER=OFF ..
-make -j2 install
-cd ../..
-
-sudo apt-get -y install libyaml-dev libncurses5-dev
+$SUDO make -j2 install
 
 cd $SRC_DIR/hmc2
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX .. -DCOMPILE_JAVA_STUFF=OFF
-make -j2 install
-cd ../..
+$SUDO make -j2 install
 
 cd $SRC_DIR/hrpsys-humanoid
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX .. -DCOMPILE_JAVA_STUFF=OFF
-make -j2 install
-cd ../..
+$SUDO make -j2 install
 
-cd $SRC_DIR/choreonoid/misc/script
-./install-requisites-ubuntu-$UBUNTU_VER.sh
-cd ../..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
+then
+    cd $SRC_DIR/hrpsys-private
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX ..
+    $SUDO make -j2 install
+fi
+
+cd $SRC_DIR/choreonoid
 mkdir build
 cd build
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
@@ -69,8 +65,7 @@ then
 else
     cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON ..
 fi
-make -j2 install
-cd ../..
+$SUDO make -j2 install
 
 echo "add the following environmental variable settings to your .bashrc"
 echo "export PATH=\$PREFIX/bin:\$PATH"
