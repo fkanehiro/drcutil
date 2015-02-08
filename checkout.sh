@@ -26,7 +26,7 @@ fi
 
 cd HRP2DRC
 git pull
-cd ../..
+cd ..
 
 
 cd hmc2
