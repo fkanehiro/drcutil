@@ -4,3 +4,8 @@ export PREFIX=$HOME/openrtp
 export HAVE_ATOM_ACCESS=1
 export SUDO=
 
+/bin/ping atom -c 1 &> /dev/null
+if [ $? -ne 0 ] 
+then
+    export HAVE_ATOM_ACCESS=0
+fi
