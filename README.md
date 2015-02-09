@@ -1,3 +1,7 @@
+This package provides a set of shell script to setup and maintain development environment for DRC.
+
+# Initial setup
+
 First copy config.sh.sample 
 ```
 % cp config.sh.sample config.sh
@@ -22,8 +26,8 @@ configure, build and install
 % ./install.sh
 ```
 
-for daily development, execute update.sh
-this script retrives the latest source codes, compiles and installs
+# Daily development
+update.sh fetches the latest source codes, builds and installs
 ```
 % ./update.sh
 ```
