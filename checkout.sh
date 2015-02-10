@@ -16,7 +16,7 @@ if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
 then
     cd HRP2
     svn update 
-    cd ../..
+    cd ..
 
     # cd robot/HRP2SH
     # svn update 
