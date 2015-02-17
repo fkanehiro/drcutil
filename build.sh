@@ -1,50 +1,26 @@
 source config.sh
 cd $SRC_DIR
 
-cd openhrp3/build
-$SUDO make -j4 install
-cd ../../
+build_install() {
+    for dir_name in $@; do
+        cd "$dir_name/build"
+        $SUDO make -j4 install
+        cd ../../
+    done
+}
 
+build_install "openhrp3" "hrpsys-base"
 
-cd hrpsys-base/build
-$SUDO make -j4 install
-cd ../../
-
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
-then
-    cd HRP2/build
-    $SUDO make -j4 install
-    cd ../..
-    # cd robot/HRP2SH/build
-    # make -j4 install
-    # cd ../..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
+    build_install "HRP2"
+    # build_install "robot/HRP2SH"
 fi
 
+build_install "HRP2DRC" "hmc2" "hrpsys-humanoid"
 
-cd HRP2DRC/build
-$SUDO make -j4 install
-cd ../..
-
-
-cd hmc2/build
-$SUDO make -j4 install
-cd ../../
-
-
-cd hrpsys-humanoid/build
-$SUDO make -j4 install
-cd ../../
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
-then
-    cd hrpsys-private/build
-    $SUDO make -j4 install
-    cd ../..
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
+    build_install "hrpsys-private"
 fi
 
-cd choreonoid/build
-$SUDO make -j4 install
-cd ../../
-
+build_install "choreonoid"
 
