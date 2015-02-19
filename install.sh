@@ -42,7 +42,7 @@ else
 fi
 
 echo "add the following environmental variable settings to your .bashrc"
-echo "export PATH=\$PREFIX/bin:\$PATH"
-echo "export LD_LIBRARY_PATH=\$PREFIX/lib"
-echo "export PKG_CONFIG_PATH=\$PREFIX/lib/pkgconfig"
-echo "export PYTHON_PATH=\$PREFIX/lib/python2.7/dist-packages/hrpsys"
+echo "export PATH=$PREFIX/bin:\$PATH"
+echo "export LD_LIBRARY_PATH=$PREFIX/lib:\$LD_LIBRARY_PATH"
+echo "export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig"
+echo "export PYTHONPATH=$PREFIX/lib/python2.7/dist-packages/hrpsys:\$PYTHONPATH"
