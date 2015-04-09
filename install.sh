@@ -20,13 +20,13 @@ cmake_install_with_option() {
 
 cmake_install_with_option "openhrp3" "-DCOMPILE_JAVA_STUFF=OFF"
 cmake_install_with_option "octomap-1.6.8"
+cmake_install_with_option "hrpsys-base" "-DCOMPILE_JAVA_STUFF=OFF -DBUILD_KALMAN_FILTER=OFF -DBUILD_STABILIZER=OFF"
 
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
-    cmake_install_with_option "HRP2"
+    cmake_install_with_option "HRP2" "-DROBOT_NAME=HRP2DRC"
 fi
 
 cmake_install_with_option "HRP2DRC"
-cmake_install_with_option "hrpsys-base" "-DCOMPILE_JAVA_STUFF=OFF -DBUILD_KALMAN_FILTER=OFF -DBUILD_STABILIZER=OFF"
 cmake_install_with_option "hmc2" "-DCOMPILE_JAVA_STUFF=OFF"
 cmake_install_with_option "hrpsys-humanoid" "-DCOMPILE_JAVA_STUFF=OFF"
 
@@ -36,7 +36,7 @@ if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
 fi
 
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
-    cmake_install_with_option "choreonoid" "-DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON -DBODY_CUSTOMIZERS=$SRC_DIR/HRP2/customizer/HRP2Customizer"
+    cmake_install_with_option "choreonoid" "-DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON -DBODY_CUSTOMIZERS=$SRC_DIR/HRP2/customizer/HRP2Customizer -DBUILD_DRC_USER_INTERFACE_PLUGIN=ON"
 else
     cmake_install_with_option "choreonoid" "-DENABLE_CORBA=ON -DBUILD_CORBA_PLUGIN=ON -DBUILD_OPENRTM_PLUGIN=ON -DBUILD_PCL_PLUGIN=ON -DBUILD_OPENHRP_PLUGIN=ON -DBUILD_GRXUI_PLUGIN=ON"
 fi
