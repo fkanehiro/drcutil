@@ -4,7 +4,14 @@ cd $SRC_DIR
 build_install() {
     for dir_name in $@; do
         cd "$dir_name/build"
-        $SUDO make -j4 install
+	echo -n "building $dir_name ... "
+        $SUDO make -j2 install > $SRC_DIR/${dir_name}.log 2>&1
+	if [ "$?" -eq 0 ]
+	then
+	    echo "success"
+	else
+	    echo -e "\e[31mfail\e[m"
+	fi
         cd ../../
     done
 }
