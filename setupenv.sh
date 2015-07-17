@@ -12,3 +12,6 @@ sudo apt-get -y install libyaml-dev libncurses5-dev
 cd $SRC_DIR/choreonoid/misc/script
 ./install-requisites-ubuntu-$UBUNTU_VER.sh
 
+#hrpcnoid
+sudo apt-get -y install libdecodeqr-dev
+
