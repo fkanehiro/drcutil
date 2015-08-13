@@ -28,6 +28,9 @@ cd HRP2DRC
 git pull
 cd ..
 
+cd HRP2JVRC
+git pull
+cd ..
 
 cd hmc2
 git pull
@@ -50,6 +53,8 @@ fi
 cd choreonoid
 GIT_SSL_NO_VERIFY=1 git pull
 cd ext/hrpcnoid
+git pull
+cd ../jvrc
 git pull
 cd ../../..
 
