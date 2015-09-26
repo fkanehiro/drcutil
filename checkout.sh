@@ -21,14 +21,15 @@ then
     # cd robot/HRP2SH
     # svn update 
     # cd ../..
+
+    cd HRP2JVRC
+    git pull
+    cd ..
+
 fi
 
 
 cd HRP2DRC
-git pull
-cd ..
-
-cd HRP2JVRC
 git pull
 cd ..
 
