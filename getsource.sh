@@ -4,8 +4,8 @@ sudo apt-get -y install subversion git
 
 cd $SRC_DIR
 git clone https://github.com/fkanehiro/openhrp3.git
-wget https://github.com/OctoMap/octomap/archive/v1.6.8.tar.gz
-tar zxvf v1.6.8.tar.gz
+wget https://github.com/OctoMap/octomap/archive/v1.7.1.tar.gz
+tar zxvf v1.7.1.tar.gz
 
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
 then
