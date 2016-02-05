@@ -23,7 +23,7 @@ if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
     # build_install "robot/HRP2SH"
 fi
 
-build_install "HRP2DRC" "HRP2JVRC" "hmc2" "hrpsys-humanoid"
+build_install "HRP2DRC" "HRP2KAI" "hmc2" "hrpsys-humanoid"
 
 if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
     build_install "hrpsys-private"

@@ -22,7 +22,7 @@ then
     # svn update 
     # cd ../..
 
-    cd HRP2JVRC
+    cd HRP2KAI
     git pull
     cd ..
 
