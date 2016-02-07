@@ -1,62 +1,40 @@
 source config.sh
 
+pull_source() {
+    for dir_name in $@; do
+	echo $dir_name
+        cd "$dir_name"
+	git pull
+        cd ..
+    done
+}
+
+if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
+    export REPO=atom
+then
+    export REPO=
+fi
+
 cd $SRC_DIR
 
-cd openhrp3
-git pull
+pull_source openhrp3 hrpsys-base hmc2 hrpsys-humanoid
+
+cd HRP2
+git pull $REPO
 cd ..
 
-
-cd hrpsys-base
-git pull
+cd HRP2KAI
+git pull $REPO
 cd ..
 
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
-then
-    cd HRP2
-    svn update 
-    cd ..
-
-    # cd robot/HRP2SH
-    # svn update 
-    # cd ../..
-
-    cd HRP2KAI
-    git pull
-    cd ..
-
-fi
-
-
-cd HRP2DRC
-git pull
+cd hrpsys-private
+git pull $REPO
 cd ..
-
-cd hmc2
-git pull
-cd ..
-
-
-cd hrpsys-humanoid
-git pull
-cd ..
-
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]
-then
-    cd hrpsys-private
-    svn update
-    cd ..
-fi
-
 
 cd choreonoid
 GIT_SSL_NO_VERIFY=1 git pull
 cd ext/hrpcnoid
 git pull
-cd ../jvrc
-GIT_SSL_NO_VERIFY=1 git pull
 cd ../../..
 
 

@@ -16,18 +16,4 @@ build_install() {
     done
 }
 
-build_install "openhrp3" "hrpsys-base"
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
-    build_install "HRP2"
-    # build_install "robot/HRP2SH"
-fi
-
-build_install "HRP2DRC" "HRP2KAI" "hmc2" "hrpsys-humanoid"
-
-if [ "$HAVE_ATOM_ACCESS" -eq 1 ]; then
-    build_install "hrpsys-private"
-fi
-
-build_install "choreonoid"
-
+build_install "openhrp3" "hrpsys-base" "HRP2" "HRP2KAI" "hmc2" "hrpsys-private" "hrpsys-humanoid" "choreonoid"
