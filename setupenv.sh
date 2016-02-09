@@ -13,5 +13,5 @@ cd $SRC_DIR/choreonoid/misc/script
 ./install-requisites-ubuntu-$UBUNTU_VER.sh
 
 #hrpcnoid
-sudo apt-get -y install libdecodeqr-dev
+sudo apt-get -y install libzbar-dev
 
