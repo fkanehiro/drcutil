@@ -19,7 +19,7 @@ cmake_install_with_option() {
 }
 
 cmake_install_with_option "openhrp3" "-DCOMPILE_JAVA_STUFF=OFF"
-cmake_install_with_option "octomap-1.7.1"
+cmake_install_with_option "octomap-1.8.0"
 cmake_install_with_option "hrpsys-base" "-DCOMPILE_JAVA_STUFF=OFF -DBUILD_KALMAN_FILTER=OFF -DBUILD_STABILIZER=OFF"
 cmake_install_with_option "HRP2" "-DROBOT_NAME=HRP2KAI"
 cmake_install_with_option "HRP2KAI"
